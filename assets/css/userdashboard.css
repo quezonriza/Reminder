@@ -62,11 +62,15 @@ body {
 
 }
 
+::placeholder {
+  font-size: 14px; /* Set the desired font size */
+}
+
 /* Set a consistent width for all input fields */
 input[type="text"],
 input[type="date"],
 input[type="time"] {
-    width: 200px; /* Adjust the width as needed */
+    width: 210px; /* Adjust the width as needed */
     padding: 10px;
     border: 1px solid green;
     border-radius: 10px;
@@ -79,6 +83,7 @@ input[type="time"] {
 .title i{
     margin-right: 20px;
 }
+
 .date{
     padding: 10px;
 }
@@ -95,7 +100,7 @@ input[type="time"] {
     padding: 10px;
 }
 .location input{
-    width: 85%;
+    width: 210px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid green;
@@ -109,7 +114,7 @@ input[type="time"] {
     padding: 10px;
 }
 .ootd input{
-    width: 82%;
+    width: 210px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid green;
@@ -189,6 +194,9 @@ span i{
     background-color: rgba(169, 193, 177, 0.867);
     width: 70%;
     height: 80%;
+     /* Set a maximum width and height for the modal content */
+    max-width: 70%;
+    max-height: 80%;
     display: flex;
     align-items: center;
     padding: 50px;
@@ -206,8 +214,17 @@ span i{
     border: 1px solid green;
     padding: 10px;
     border-radius: 10px;
-
+    width: 400px; /* Fixed width of the div */
+    max-height: 300px; /* Maximum height of the div */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+    box-sizing: border-box; 
 }
+
+textarea {
+    height: 100px; /* Fixed height for textarea */
+    resize: none; /* Prevent resizing of textarea */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+  }
 
 @media (min-width: 768px) {
     body {

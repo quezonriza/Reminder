@@ -56,6 +56,13 @@
     width: 80%;
     max-width: 400px;
   }
+
+.modal-content h2{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding:10px;
+}
   
   .close {
     color: #aaa;
@@ -101,11 +108,11 @@
         </div>
         <div class="date">
             <i class="fa-solid fa-calendar-days"></i>
-            <input type="date" name="date">
+            <input type="date" name="date" class="date-input">
         </div>
         <div class="time">
             <i class="fa-solid fa-clock"></i>
-            <input type="time" name="time" placeholder="Time...">
+            <input type="time" name="time">
         </div>
         <div class="location">
             <i class="fa-solid fa-location-pin"></i>
@@ -113,7 +120,7 @@
         </div>
         <div class="ootd">
             <i class="fa-solid fa-person-dress"></i>
-            <input type="text" name="ootd" placeholder="Plan Your Clothes...">
+            <textarea name="ootd" id="" cols="30" rows="10">Plan Your Ootd </textarea>
         </div>
         <div class="checkbox">
             <input type="radio" name="priority" value="High"> High Priority 
@@ -132,7 +139,7 @@
         <div class="icon">
             <i class="fa-solid fa-square-check"></i>
         </div>
-        <div class="title">
+        <div class="activitytitle">
             <h1>My Activity-s</h1>
         </div>
     </div>
@@ -224,8 +231,9 @@
                     </div>
                     <div>Location: <?php echo $row['location']; ?></div>
                     <div>Ootd: <?php echo $row['ootd']; ?></div>
+                    <div>Remarks: <?php echo $row['remarks']; ?></div>
                     <div class="remarks">
-                        <input type="textarea" name="remarks" placeholder="Write your Comments Here...">
+                        <textarea name="remarks" id="" cols="30" rows="10" placeholder="Write Your Comments Here..."></textarea>
                     </div>
                     
                     <div class="button">
