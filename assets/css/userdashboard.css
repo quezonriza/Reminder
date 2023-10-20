@@ -1,0 +1,264 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    background-color: rgba(169, 193, 177, 0.867);
+    padding: 20px;
+    width: 30%;
+    height: 50%;
+    border-radius: 10px;
+    margin-top: 8%;
+}
+.container-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    width: 50%;
+    height: 60%;
+    border-radius: 10px;
+    margin-bottom: 3%;
+}
+.container-1 i {
+    font-size: 30px;
+}
+.container-1 h1 {
+    text-decoration: underline;
+    font-size: 30px;
+}
+.container-2 {
+    color: green;
+    background-color: rgba(169, 193, 177, 0.867);
+    width: 70%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.container-3{
+    margin-top: 7%;
+    margin-bottom: 10%;
+}
+
+.formfield{
+    background-color: rgba(169, 193, 177, 0.867);
+    padding: 30px;
+    border-radius: 10px;
+
+}
+
+/* Set a consistent width for all input fields */
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    width: 200px; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: rgba(169, 193, 177, 0.867);
+    outline: none;
+}
+.title{
+    padding: 10px;
+}
+.title i{
+    margin-right: 20px;
+}
+.date{
+    padding: 10px;
+}
+.date i{
+    margin-right: 18px;
+}
+.time{
+    padding: 10px;
+}
+.time i{
+    margin-right: 20px;
+}
+.location{
+    padding: 10px;
+}
+.location input{
+    width: 85%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid green;
+    background-color: rgba(169, 193, 177, 0.867);
+}
+.location i{
+    margin-right: 20px;
+}
+
+.ootd{
+    padding: 10px;
+}
+.ootd input{
+    width: 82%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid green;
+    background-color: rgba(169, 193, 177, 0.867);
+}
+.ootd i{
+    margin-right: 20px;
+}
+.btn-add input{
+    padding: 5px;
+    border: none;
+    background-color: green;
+    color: rgb(209, 244, 211);
+    border-radius: 10px;
+    width: 30%;
+}
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+/* Style the dropdown button */
+.dropdown-button {
+    background-color:rgba(169, 193, 177, 0.867);
+    color: green;
+    border-color: green;
+    height: 205;
+    cursor: pointer;
+}
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/* Style the dropdown links */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+/* Change link color on hover */
+.dropdown-content a:hover {
+    background-color :rgba(169, 193, 177, 0.867);
+    color: #fff;
+}
+/* Show the dropdown content when hovering over the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+span i{
+    margin-left: 50px;
+}
+.container-3{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.formfield{
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.checkbox{
+    display: flex;
+    gap: 20px
+}
+
+.container-4 {
+    color: green;
+    background-color: rgba(169, 193, 177, 0.867);
+    width: 70%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+}
+.container-4 .fa-clipboard-list{
+    font-size: 90px;
+    margin-bottom: 20px;
+}
+
+.data-item{
+    border: 1px solid green;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .main {
+        width: 70%;
+    }
+
+    .container-1 {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .container-1 i {
+        font-size: 2.5em;
+    }
+
+    .container-1 h1 {
+        font-size: 1.8em;
+    }
+
+    .container-2,
+    .container-4 {
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: 20px;
+    }
+
+    .main {
+        width: 50%;
+    }
+
+    .container-1 i {
+        font-size: 3em;
+    }
+
+    .container-1 h1 {
+        font-size: 2em;
+    }
+
+    .container-2,
+    .container-4 {
+        width: 50%;
+    }
+}
