@@ -5,6 +5,7 @@
      // Retrieve the receiver ID and message content from the form
      $receiverId = $_POST['receiverId'];
      $messageContent = $_POST['messageContent'];
+     $intendedTo = $_POST['intendedTo'];
  
      // Validate and process the data as needed
      // ...
@@ -20,16 +21,16 @@
          die("Connection failed: " .$conn->connect_error);
      }
      // Prepare and execute the SQL statement to insert the notification data
-     $sql = "INSERT INTO notification (userid, message) VALUES (?, ?)";
+     $sql = "INSERT INTO announcement(userid, messageContent, intendedTo) VALUES (?, ?, ?)";
      $stmt = $conn->prepare($sql);
-     $stmt->bind_param("is", $receiverId, $messageContent);
+     $stmt->bind_param("iss", $receiverId, $messageContent, $intendedTo);
      $stmt->execute();
  
      // Check if the insertion was successful
      if ($stmt->affected_rows > 0) {
-         echo "Notification data stored successfully.";
+        header('Location: admindashboard.php');
      } else {
-         echo "Failed to store notification data.";
+        echo "Failed to store notification data.";
      }
      $conn->close();
  }

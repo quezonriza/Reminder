@@ -1,7 +1,6 @@
 <?php
   include_once("included/header.php");
 ?>
-
 <br><br><br><br><br><br>
 
 <!DOCTYPE html>
@@ -46,21 +45,57 @@
       width: 100px;
    
   }
-  .inputfield{}
   .inputfield input{
-    border-color: green;
+    border: 1px solid green;
     background-color: rgba(169, 193, 177, 0.867);
     padding: 10px;
     border-radius: 10px;
     outline: none;
   }
 
+    /* CSS for the popping out effect */
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to the input field when it's focused (clicked) */
+.inputfield input:focus {
+  animation: popOut 0.8s ease;
+  border: 1px solid white;
+}
+  .login-part{
+    display: flex;
+    gap: 30px;
+    color: green;
+  }
+
+  .login-part .login-btn{
+    color: green;
+    transition: all 0.8s ease;
+    padding: 10px;
+  }
+  .login-part .login-btn:hover{
+    background-color: white;
+    color: green;
+    transition: all 0.8s ease;
+    } 
+
   .login-part a{
     text-decoration: underline;
+    transition: all 0.8s ease;
   }
 
   .login-part a:hover{
     color: white;
+    transition: all 0.8s ease;
   }
 
   .login-part{
@@ -86,10 +121,12 @@
 
   .register-part a{
     text-decoration: underline;
+    transition: all 0.8s ease;
   }
 
   .register-part a:hover{
     color: white;
+    transition: all 0.8s ease;
   }
 
 </style>
@@ -104,10 +141,10 @@
     </div>
     <div class="inputfield">
       <label class="labels" for="">Password:</label>
-      <input type="text" name="password" required>
+      <input type="password" name="password" required>
     </div>
     <div class="login-part">
-      <a class="forgotpass" href="">Forgot Password</a>
+      <a class="forgotpass" href="">Forgot Password ?</a>
       <input class="login-btn" type="submit" value="Login">
     </div>
     <div class="register-part">

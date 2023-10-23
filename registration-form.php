@@ -23,6 +23,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.6); 
     }
     .main {
         display: flex;
@@ -41,17 +42,35 @@
       display: inline-block;
       text-align: justify;
       width: 100px;
-   
   }
 
   .inputfield input{
-    border-color: green;
+    border: 1px solid green;
     background-color: rgba(169, 193, 177, 0.867);
     padding: 10px;
     border-radius: 10px;
     outline: none;
   }
 
+
+  /* CSS for the popping out effect */
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to the input field when it's focused (clicked) */
+.inputfield input:focus {
+  animation: popOut 0.8s ease;
+  border: 1px solid white;
+}
   .login-part{
     display: flex;
     gap: 30px;
@@ -66,10 +85,12 @@
 
   .login-part a{
     text-decoration: underline;
+    transition: all 0.8s ease;
   }
 
   .login-part a:hover{
     color: white;
+    transition: all 0.8s ease;
   }
 
   .first-form{
@@ -100,6 +121,8 @@
     gap: 40px
   }
 
+
+/* CSS for the smooth hovering effect */
   .register-btn{
     color: rgb(216, 224, 229);
     background-color: green;
@@ -109,11 +132,13 @@
     border: none;
     width: 30%;
     margin-left: 70%;
+    transition: all 0.8s ease;
   }
 
   .register-btn:hover {
     background-color: white;
     color: green;
+    transition: all 0.8s ease;
 }
 
 </style>
@@ -137,6 +162,9 @@
 
         <label class= "gender" for="">Female:</label>
         <input type="radio" name="gender" id="female"value ="female" required>
+
+        <label class= "gender" for="">Others:</label>
+        <input type="radio" name="gender" id="others" value ="others" required>
     </div>
     <input class="register-btn" type="submit" value="Submit">
     <div class="login-part">

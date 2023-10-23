@@ -39,7 +39,7 @@
 <style> 
    
 
-}
+
 </style>
 <!--End of css style-->
 
@@ -53,6 +53,22 @@
     include("../included/dbconn.php");
 ?>
 <br><br><br><br>
+
+<!-- Start of the pop out modal for sending notification to a specific users-->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Send Message</h2>
+    <form id="messageForm" action="store-notification-data.php" method="post">
+      <input type="hidden" id="receiverId" name="receiverId" value="">
+      <textarea name="messageContent" rows="4" placeholder="Enter your message"></textarea>
+      <input type="radio" name="intendedTo" value= "all"> All Users
+      <input type="radio" name="intendedTo" value= "specific">Specific Users
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
+<!--End of the pop out modal code-->
 
 <!--holds the Counting of Data-->
 <div class="container-top">
@@ -192,7 +208,7 @@
                         <a href="#" onclick="return activateAccount(event, <?php echo $row['userid']; ?>);">
                             <i class="fa-solid fa-users"></i>
                         </a>
-                        <a href="#" class="fa-message" data-userid="<?php echo $row['userid']; ?>" onclick="openModal(event, <?php echo $row['userid']; ?>);">
+                        <a href="" class="fa-message" data-userid="<?php echo $row['userid']; ?>" onclick="openModal(event, <?php echo $row['userid']; ?>);">
                             <i class="fa-solid fa-message"></i>
                         </a>
                     </td>
@@ -208,11 +224,14 @@
         <?php
             $query1 = "SELECT count(*) as male FROM users WHERE gender = 'male' and role = 'user'";
             $query2 = "SELECT count(*) as female FROM users WHERE gender = 'female' and role = 'user'";
+            $query3 = "SELECT count(*) as others FROM users WHERE gender = 'others' and role = 'user'";
                 
             $result1 = mysqli_query($conn, $query1);
             $result2 = mysqli_query($conn, $query2);
+            $result3 = mysqli_query($conn, $query3);
             $row1 = mysqli_fetch_assoc($result1);
             $row2 = mysqli_fetch_assoc($result2);
+            $row3 = mysqli_fetch_assoc($result3);
         ?>
         <canvas id="myChart" width="400" height="500"></canvas>
     </div>
@@ -223,7 +242,7 @@
 
 <div class="secondmain">
     <!--Displaying the amount of users registered in the specific month-->
-    <div class="bargraph2">
+    <div class="bargraph1">
         <?php
             $query = "SELECT createdAt FROM users"; 
             $result = mysqli_query($conn, $query);
@@ -251,43 +270,28 @@
 
     <div class="bargraph2">
         <?php
-    $conn = getConnection();
-$query = "SELECT MONTH(date) as month, COUNT(*) as activity_count FROM activity GROUP BY MONTH(date)";
-$result = mysqli_query($conn, $query);
+            $conn = getConnection();
+            $query = "SELECT MONTH(date) as month, COUNT(*) as activity_count FROM activity GROUP BY MONTH(date)";
+            $result = mysqli_query($conn, $query);
 
-$activitymonths = [];
-$activityCounts = [];
+            $activitymonths = [];
+            $activityCounts = [];
 
-while ($row = mysqli_fetch_assoc($result)) {
-    // Convert the numeric month to its respective name (e.g., 1 => "January")
-    $monthName = date("F", mktime(0, 0, 0, $row['month'], 1));
-    $activitymonths[] = $monthName;
-    $activityCounts[] = $row['activity_count'];
-}
+            while ($row = mysqli_fetch_assoc($result)) {
+            // Convert the numeric month to its respective name (e.g., 1 => "January")
+            $monthName = date("F", mktime(0, 0, 0, $row['month'], 1));
+            $activitymonths[] = $monthName;
+            $activityCounts[] = $row['activity_count'];
+            }   
 
-// Close the database connection
-mysqli_close($conn);
-?>
+            // Close the database connection
+            mysqli_close($conn);
+        ?>
         
-    <canvas id="monthlyActivityChart" width="400" height="300"></canvas>
-
+             <canvas id="monthlyActivityChart" width="500" height="300"></canvas>
     </div>
     <!--End of the presentation of data through bargrpah-->
 </div>
-
-<!-- Start of the pop out modal for sending notification to a specific users-->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Send Message</h2>
-    <form id="messageForm" action="store-notification-data.php" method="post">
-      <input type="hidden" id="receiverId" name="receiverId" value="">
-      <textarea name="messageContent" rows="4" placeholder="Enter your message"></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </div>
-</div>
-<!--End of the pop out modal code-->
 
 <?php
   include_once("../included/footer.php");
@@ -297,28 +301,6 @@ mysqli_close($conn);
 
 <!--Start of a javascript code-->
 <script>
-
-// javascript code that handles the pie chart creation
-var xValues = ["Male", "Female" ,"Others"];
-var yValues = [<?php echo $row1['male'] ?>, <?php echo $row2['female'] ?>];
-var barColors = ["#b91d47", "#00aba9"];
-
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {    
-    title: {
-      display: true,
-    },
-    maintainAspectRatio: false 
-  }
-});
 
 //Javascript code for handling the deactivation and activation of the user account
 function deactivateAccount(event, userId) {
@@ -369,6 +351,28 @@ function activateAccount(event, userId) {
     return false;
 }
 
+// javascript code that handles the pie chart creation
+var xValues = ["Male", "Female" ,"Others"];
+var yValues = [<?php echo $row1['male'] ?>, <?php echo $row2['female'] ?>, <?php echo $row3['others'] ?>];
+var barColors = ["#00FF00", "#008000", "#004400"];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {    
+    title: {
+      display: true,
+    },
+    maintainAspectRatio: false 
+  }
+});
+
 //Javascript for the creation of the bar graph
 // Get the canvas element and its 2d context
 var ctx = document.getElementById('barChart1').getContext('2d');
@@ -383,8 +387,8 @@ var barChart = new Chart(ctx, {
         datasets: [{
             label: 'Number of Registrations',
             data: registrationCounts, // Y-axis data (registration counts)
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Bar color with transparency
-            borderColor: 'rgba(75, 192, 192, 1)', // Border color
+            backgroundColor: '#008000', // Bar color with transparency
+            borderColor: '#00FF00',// Border color
             borderWidth: 1 // Border width
         }]
     },
@@ -392,6 +396,11 @@ var barChart = new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true // Start Y-axis at zero
+            }
+        },
+        plugins: {
+            legend: {
+                display: false // Set to false to hide the legend
             }
         }
     }

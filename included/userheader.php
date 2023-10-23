@@ -29,56 +29,59 @@
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Bethany
-  * Updated: Aug 30 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   <style>
       /* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
- 
-
+    .notificationmodal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); 
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        color: green;
+    }
+    .notificationmodal-content {
+        background-color:   rgba(169, 193, 177, 0.867);
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 400px;
+        height: 50%
+    }
+    .notificationmodal-content h2{
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        padding:10px;
+        color: green;
+    }
+    .closenotification{
+        color: green;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }  
+    .closenotification:hover,
+    .closenotification:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <?php
+    include("dbconn.php");
+  ?>
       <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">
@@ -128,13 +131,7 @@
               </ul>
             </li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <div class="dropdown">
-    <button class="dropbtn">Select an Option</button>
-    <div class="dropdown-content">
-        <?php echo $options; ?>
-    </div>
-</div>
-            <li><a class="nav-link scrollto" href="#notification" id="notificationIcon" onclick="openNotificationModal(event)"><i class="fa-solid fa-bell"></i></a></li>
+            <li><a class="nav-link scrollto" href="#" onclick="openNotificationModal(event)"><i class="fa-solid fa-bell"></i></a></li>
             <li><a class="nav-link scrollto" href="#message"><i class="fa-solid fa-message"></i></a></li>
             <li><a class="getstarted scrollto" href="../logout.php?logout=1">Logout</a></li>
           </ul>
@@ -142,7 +139,37 @@
         </nav><!-- .navbar -->
 
       </div><!-- End Header Container -->
-    </div>
+   <!-- The modal form -->
+<div id="notificationModal" class="notificationmodal">
+  <div class="notificationmodal-content">
+    <span class="closenotification" onclick="closenotificationModal()">&times;</span>
+    <h2>Announcements</h2>
+    <?php
+            $conn = getConnection();
+            // Retrieve user information from the database
+            $query = "SELECT * FROM announcement WHERE userid = ".$_SESSION["userid"]."";
+            $result = mysqli_query($conn, $query);
+    ?>
+    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+
+        <form action="delete-announcement.php?id=<?php echo $row['announcementId']; ?>"  method="post">
+        <div>
+            <div>
+                Date and Time: <?php echo $row['createdAt']; ?>
+            </div>
+            <div> 
+              <?php echo $row['messageContent']; ?>
+            </div>
+            <div class="button">
+                <input type="submit" class="done-button" value="Delete">
+            </div>
+        </div>
+        </form>
+
+ <br>
+<?php } ?>
+  </div>
+</div>
   </header><!-- End Header -->
 
   <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -155,5 +182,28 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script>
+    // Open the modal form
+    function openNotificationModal(event) {
+        event.preventDefault();
+      var notificationmodal = document.getElementById("notificationModal");
+      notificationmodal.style.display = "block";
+    }
+
+    // Close the modal form
+    function closenotificationModal() {
+      var notificationmodal = document.getElementById("notificationModal");
+      notificationmodal.style.display = "none";
+    }
+
+    // Close the modal form when clicking outside of it
+    window.onclick = function(event) {
+      var notificationmodal = document.getElementById("notificationModal");
+      if (event.target == notificationmodal) {
+      notificationmodal.style.display = "none";
+      }
+    };
+
+</script>
 </body>
 </html>

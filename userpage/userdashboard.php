@@ -92,7 +92,7 @@
     include_once("../included/userheader.php");
     include("../included/dbconn.php");
 ?>
-<br><br><br><br><br>
+
 <!-- The modal form -->
 <div id="myModal" class="modal">
   <div class="modal-content">

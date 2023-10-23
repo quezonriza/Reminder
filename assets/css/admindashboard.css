@@ -1,29 +1,4 @@
-.secondmain{
-    width: 100%;
-    background-color: rgba(169, 193, 177, 0.867);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px;
-}
-.bargraph{
-    background-color:  rgba(169, 193, 177, 0.867);
-    width: 40%;
-}
-.container-top{
-    margin-top: 30px;
-    background-color: black;
-    width: 100%;
-    height: 150px;
-}
-
-.numberofusers{
-    background-color: green;
-    width: 50%;
-    height: 50%;
-
-}
-
+/*modal styles*/
 .modal {
 display: none;
 position: fixed;
@@ -67,19 +42,23 @@ align-items: center;
 justify-content: center;
 flex-direction: row;
 background-color: rgba(169, 193, 177, 0.867);
-padding: 2%;
-gap: 8%;
+padding: 2% 2% 0 2%;
+gap: 2%;
 height: 100vh; /* Set a minimum height for the main container, adjust as needed */
 }
 
 .container-left{
 background-color: rgba(169, 193, 177, 0.867);
-border-radius: 10%;
+border-radius: 2%;
 padding: 2% 2% 2% 5%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 width: 80%;
+height: 68%;
+border: 1px solid green;
+padding: 40px;
+overflow: auto;
 }
 
 .title{
@@ -114,3 +93,71 @@ border: 1px solid black;
 font-size: 12px;
 padding: 10px;
 }
+.pie-chart-right-top{
+    border: 1px solid green;
+    padding: 40px;
+}
+.container-top{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    background-color: rgba(169, 193, 177, 0.867);
+    width: 100%;
+    height: 150px;
+    gap: 70px;
+    padding: 90px 50px 50px 50px;
+    justify-content: center;
+}
+
+.numberofusers{
+    background-color: rgb(172, 186, 172);
+    width: 200px; /* Set your desired width */
+    height: 200px; 
+    border-radius: 50px;
+}
+
+.numberofactiveusers{
+    background-color: green;
+    width: 200px; /* Set your desired width */
+    height: 200px; 
+}
+
+.numberofinactiveusers{
+    background-color: green;
+    width: 200px; /* Set your desired width */
+    height: 200px; 
+}
+
+
+.deactivedaccounts{
+    background-color: green;
+    width: 200px; /* Set your desired width */
+    height: 200px; 
+}
+.activedaccounts{
+    background-color: green;
+    width: 200px; /* Set your desired width */
+    height: 200px; 
+}
+
+.secondmain{
+    width: 100%;
+    background-color: rgba(169, 193, 177, 0.867);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    padding: 10px 50px 90px 20px;
+}
+.bargraph1{
+    width: 50%;
+    border: 1px solid green;
+    padding: 30px;
+}
+.bargraph2{
+    width: 50%;
+    border: 1px solid green;
+    padding: 30px;
+    background-color:#004400;
+}
+
