@@ -61,8 +61,6 @@
     <h2>Send Announcements</h2>
     <form id="messageForm" action="store-notification-data.php" method="post">
       <input type="hidden" id="receiverId" name="receiverId" value="">
-      <label for="">Announcement Title:</label><br>
-      <input type="text">
       <textarea name="messageContent" rows="4" placeholder="Enter your message"></textarea>
       <input type="radio" name="intendedTo" value= "all"> All Users
       <input type="radio" name="intendedTo" value= "specific">Specific Users
@@ -90,7 +88,7 @@
             }
             mysqli_close($conn);
         ?>
-        <h2>Total Number Of Users: <?php echo $totalNumberOfUsers; ?></h2>
+        <h2>Number Of Users: <br><br><?php echo $totalNumberOfUsers; ?></h2>
     </div>
     <div class="numberofactiveusers">
         <?php
@@ -108,7 +106,7 @@
             }
             mysqli_close($conn);
         ?>
-            <h2>Total Active Users: <?php echo $totalactiveUsers; ?></h2>
+            <h2>Active Users: <br><br> <?php echo $totalactiveUsers; ?></h2>
     </div>
     <div class="numberofinactiveusers">
         <?php
@@ -126,43 +124,43 @@
             }
             mysqli_close($conn);
         ?>
-        <h2>Total Inactive Users: <?php echo $totalInactiveUsers; ?></h2>
+        <h2>Inactive Users: <br><br><?php echo $totalInactiveUsers; ?></h2>
     </div>
     <div class="deactivedaccounts">
         <?php
             $conn = getConnection();
             // Retrieve the total number of users with inactive account status
-            $query = "SELECT COUNT(*) AS deactivedUsers FROM users WHERE accountStatus = 'deactived' AND role = 'user'";
+            $query = "SELECT COUNT(*) AS deactivatedUsers FROM users WHERE accountStatus = 'deactivated' AND role = 'user'";
             $result = mysqli_query($conn, $query);
 
             if ($result) {
                 $row = mysqli_fetch_assoc($result);
-                $deactivedUsers = $row['deactivedUsers'];
+                $deactivedUsers = $row['deactivatedUsers'];
             } else {
                 // Handle the query error
                 $deactivedUsers = 0;
             }
             mysqli_close($conn);
         ?>
-        <h2>Total Of Deactived Accounts: <?php echo $deactivedUsers; ?></h2> 
+        <h2>Deactivated Accounts: <br><br><?php echo $deactivedUsers; ?></h2> 
     </div>
     <div class="activedaccounts">
         <?php
             $conn = getConnection();
             // Retrieve the total number of users with inactive account status
-            $query = "SELECT COUNT(*) AS activedUsers FROM users WHERE accountStatus = 'actived' AND role = 'user'";
+            $query = "SELECT COUNT(*) AS activatedUsers FROM users WHERE accountStatus = 'activated' AND role = 'user'";
             $result = mysqli_query($conn, $query);
 
             if ($result) {
                 $row = mysqli_fetch_assoc($result);
-                $activedUsers = $row['activedUsers'];
+                $activedUsers = $row['activatedUsers'];
             } else {
                 // Handle the query error
                 $activedUsers = 0;
             }
             mysqli_close($conn);
         ?>
-        <h2>Total Of Actived Accounts: <?php echo $activedUsers; ?></h2>
+        <h2>Activated Accounts: <br><br><?php echo $activedUsers; ?></h2>
     </div>
 </div>
 <!--Ends of the container-top. The data holder-->

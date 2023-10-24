@@ -97,47 +97,36 @@ padding: 10px;
     border: 1px solid green;
     padding: 40px;
 }
-.container-top{
+.container-top {
     display: flex;
-    flex-direction: row;
-    margin-top: 30px;
-    background-color: rgba(169, 193, 177, 0.867);
-    width: 100%;
-    height: 150px;
-    gap: 70px;
-    padding: 90px 50px 50px 50px;
     justify-content: center;
+    gap: 6%;
+    align-items: center;
+    background-color: rgba(169, 193, 177, 0.867);
 }
 
-.numberofusers{
-    background-color: rgb(172, 186, 172);
-    width: 200px; /* Set your desired width */
-    height: 200px; 
-    border-radius: 50px;
+.container-top > div {
+    width: 150px;
+    height: 150px;
+    background-color: #008000; /* Green background color */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    line-height: 150px;
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0px 0px 10px 0px rgba(0, 128, 0, 0.3); /* Optional: Add shadow */
+    margin: 80px 10px 0px 10px; /* Optional: Add margin between containers */
 }
 
-.numberofactiveusers{
-    background-color: green;
-    width: 200px; /* Set your desired width */
-    height: 200px; 
+/* Style for h2 inside the div */
+.container-top > div > h2 {
+    font-size: 18px;
+    margin-top: 10px;
 }
 
-.numberofinactiveusers{
-    background-color: green;
-    width: 200px; /* Set your desired width */
-    height: 200px; 
-}
-
-
-.deactivedaccounts{
-    background-color: green;
-    width: 200px; /* Set your desired width */
-    height: 200px; 
-}
-.activedaccounts{
-    background-color: green;
-    width: 200px; /* Set your desired width */
-    height: 200px; 
+/* Hover effect */
+.container-top > div:hover {
+    background-color: #005700; /* Darker green on hover */
+    cursor: pointer;
 }
 
 .secondmain{
@@ -158,6 +147,6 @@ padding: 10px;
     width: 50%;
     border: 1px solid green;
     padding: 30px;
-    background-color:#004400;
+    background-color:#ebf3eb;
 }
 

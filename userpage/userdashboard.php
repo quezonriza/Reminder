@@ -119,7 +119,7 @@
         </div>
         <div class="ootd">
             <i class="fa-solid fa-person-dress"></i>
-            <textarea name="ootd" id="" cols="30" rows="10">Plan Your Ootd </textarea>
+            <textarea name="ootd" id="" cols="30" rows="10" placeholder= "Plan Your Ootd"></textarea>
         </div>
         <div class="checkbox">
             <input type="radio" name="priority" value="High"> High Priority 

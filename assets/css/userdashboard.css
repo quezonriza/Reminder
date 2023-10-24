@@ -224,7 +224,12 @@ textarea {
     height: 100px; /* Fixed height for textarea */
     resize: none; /* Prevent resizing of textarea */
     overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+    background-color: rgba(0, 128, 0, 0.39);
   }
+
+.remarks textarea{
+    background-color: rgba(0, 128, 0, 0.363);
+}
 
 @media (min-width: 768px) {
     body {
