@@ -85,14 +85,13 @@
     color: white;
     font-weight: bold;
   }
+
 </style>
 
 <body>
 <?php
     include_once("../included/userheader.php");
-    include("../included/dbconn.php");
 ?>
-
 <!-- The modal form -->
 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -169,7 +168,6 @@
         </div>
     </div>
 <!-- end of the third container -->
-
 <!-- Fourth container -->
 <!-- rendering of data from the databse system -->
     <div class="container-4">
@@ -238,12 +236,10 @@
                     
                     <div class="button">
                         <a href="delete-activity.php?id=<?php echo $row['activityid']; ?>" onclick="return confirm('Are you sure you want to delete this activity?');"><i class="fa-solid fa-trash-can"></i></a>
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <a href="edit-activity.php?id=<?php echo $row['activityid']; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
                         <input type="hidden" name="activityid" value="<?php echo $row['activityid']; ?>">
                         <input type="submit" class="done-button" value="Done">
                     </div>
-
-
                  </div>
                  </form>
 
@@ -256,9 +252,6 @@
 
        </div>
        <!-- end of the main container -->
-
-
-<
 <!-- JavaScript code -->
 
 <script>
@@ -282,7 +275,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-
 </script>
 
 </body>

@@ -58,9 +58,11 @@
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Send Message</h2>
+    <h2>Send Announcements</h2>
     <form id="messageForm" action="store-notification-data.php" method="post">
       <input type="hidden" id="receiverId" name="receiverId" value="">
+      <label for="">Announcement Title:</label><br>
+      <input type="text">
       <textarea name="messageContent" rows="4" placeholder="Enter your message"></textarea>
       <input type="radio" name="intendedTo" value= "all"> All Users
       <input type="radio" name="intendedTo" value= "specific">Specific Users
